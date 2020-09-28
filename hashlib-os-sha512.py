@@ -16,10 +16,14 @@ if entrar == 'S' or entrar == 's':
     hash.update(('%s%s' % (password_salt, password)).encode('utf-8'))
     password_hash = hash.hexdigest()
     senha = password_hash
+    print('--------------------------------------------------------------------------------------------------------')
     print(senha)
+    print('--------------------------------------------------------------------------------------------------------')
     ver = input('Deseja visualizar sua senha S/N : ')
     if ver == 'S' or ver == 's':
+        print('--------------------------')
         print(f'Sua senha e : {user}')
+        print('--------------------------')
     else:
         print('Saindo ...')
 else:

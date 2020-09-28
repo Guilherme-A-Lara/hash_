@@ -19,7 +19,7 @@ if entrar == 'S' or entrar == 's':
     sha_signature = encrypt_string(hash_string)
     # saida do valor criptografado
     print('--------------------------------------------------------------------------------------------------------')
-    print(sha_signature)
+    print(sha_signature[:8])
     print('--------------------------------------------------------------------------------------------------------')
     ver = input('Deseja visualizar sua senha S/N : ')
     if ver == 'S' or ver == 's':

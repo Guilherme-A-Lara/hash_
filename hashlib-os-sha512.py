@@ -17,7 +17,7 @@ if entrar == 'S' or entrar == 's':
     password_hash = hash.hexdigest()
     senha = password_hash
     print('--------------------------------------------------------------------------------------------------------')
-    print(senha)
+    print(senha[:8])
     print('--------------------------------------------------------------------------------------------------------')
     ver = input('Deseja visualizar sua senha S/N : ')
     if ver == 'S' or ver == 's':

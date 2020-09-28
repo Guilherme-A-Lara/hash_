@@ -8,9 +8,9 @@ entrar = input('Deseja fazer login S/N : ')
 if entrar == 'S' or entrar == 's':
     senha = input('Digite a sua senha: ')
     result = hashlib.md5(senha.encode())
-    print('--------------------------------------------------------------------------------------------------------')
+    print('----------------------------')
     print(result.hexdigest()[:8])  # pegar só os 8 primeiros digitos
-    print('--------------------------------------------------------------------------------------------------------')
+    print('----------------------------')
     ver = input('Deseja visualizar sua senha S/N : ')
     if ver == 'S' or ver == 's':
         print('--------------------------')

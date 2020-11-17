@@ -16,7 +16,6 @@ Tabela de Vigenere = Muito usado na Segunda Guerra Mundial
 Resultará em :
 fsjmi ts ebscs
 '''
-
 def msg_and_key():
     msg = input("Enter message: ").upper()#passar a mensagem/senha
     key = input("Enter key: ").upper()#passar o valor da chave  de criptografia
@@ -113,7 +112,7 @@ def main():
         cipher_encryption(message, mapped_key)
         escolha = input('Deseja Descriptografar seu código? (S/N)').upper()
         if escolha == 'S' :
-          msg = msg_and_key()
+          msg = message
           print(f'Sua senha é {msg}')
          
     else:

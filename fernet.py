@@ -16,7 +16,7 @@ if entrar == 'S' or entrar == 's':
     token = cifra.encrypt(senha_encode_64)
     # saida
     print('--------------------------------------------------------------------------------------------------------')
-    print(token[:8])
+    print(token[:15])
     print('--------------------------------------------------------------------------------------------------------')
 
     decripto = input('Deseja visualizar a senha descriptografada S/N : ')

@@ -17,24 +17,103 @@ Resultará em :
 fsjmi ts ebscs
 '''
 
-class Solution:
-   def solve(self, text, key):
-      cip = []
-      start = ord('a')
-      for l, k in zip(text, key):
-         shift = ord(k) - start
-         pos = start + (ord(l) - start + shift) % 26
-         cip.append(chr(pos))
-      return ''.join([l for l in cip])
-ob = Solution()
-entrar = input('Deseja inserir uma senha?  S/N   ')
-if entrar =='s' or entrar == 'S':
-  text = input('Digite sua senha : ')
-  key = "abcdefgahdjasdjk"
-  ver = input('Deseja visualizar a senha ? S/N   ')
-  if ver =='s' or ver == 'S':
-    print(text)
-else:
-  print('Saindo do programa...')
+def msg_and_key():
+    msg = input("Enter message: ").upper()#passar a mensagem/senha
+    key = input("Enter key: ").upper()#passar o valor da chave  de criptografia
 
-print(ob.solve(text, key))
+    # variable to store mapped key
+    key_map = "" 
+
+    j=0
+    for i in range(len(msg)):
+        if ord(msg[i]) == 32:
+            #ignorando espaços
+            key_map += " "
+        else:
+            if j < len(key):
+                key_map += key[j]
+                j += 1
+            else:
+                j = 0
+                key_map += key[j]
+                j += 1
+
+    # print(key_map)
+    return msg, key_map
+
+
+def criar_vigenere_table():#criar uma tablea de vigenere
+    table = []
+    for i in range(26):#para i no range de 26 -> alfabeto
+        table.append([]) #crio a tabela
+
+    for row in range(26): # para a linha no range de 26
+        for column in range(26): # para a coluno no range de 26
+            if (row + 65) + column > 90: #se a kinha +65 + coluna for maior que 90
+                # movendo de volta para A após Z
+                # após a primeira linha, cada letra será deslocada uma posição para a esquerda em comparação com a linha acima dela
+                table[row].append(chr((row+65) + column - 26))
+            else:
+               # após a primeira linha, cada letra será deslocada uma posição para a esquerda em comparação com a linha acima dela
+                table[row].append(chr((row+65)+column))
+
+    # printando a tabela caso seja necessario ve-la
+    # for row in table:
+    #     for column in row:
+    #         print(column, end=" ")
+    #     print(end="\n")
+
+    return table
+
+
+def cipher_encryption(message, mapped_key):
+    table = criar_vigenere_table() # pego a tabela craida
+    encrypted_text = "" #passo valor nulo do texto encriptado
+
+    for i in range(len(message)): #enquando o i estiver no range do tamanho da mensagem
+        if message[i] == chr(32): #se o vetor i da mensagem for = a um char(32)
+            # ignorando espaços
+            encrypted_text += " " # facço a encriptação
+        else:
+            # obter o elemento no índice específico da tabela
+            row = ord(message[i])-65 #A função ord () retorna um inteiro que representa o caractere Unicode.
+            column = ord(mapped_key[i]) - 65 # coluna recebe o ord e mapeia de acordo com a key
+            encrypted_text += table[row][column] #faço a encriptaçaõ juntando as linhas e as colunas , por ex em Linha A , M = T
+
+    print("Encrypted Message: {}".format(encrypted_text)) #mostro o valor criptografado formatado
+
+def itr_count(mapped_key, message):
+    counter = 0
+    result = ""
+
+    #iniciando os alfabetos da letra mapped_key e terminando todas as 26 letras dela, (depois de z, passamos para a)
+    for i in range(26): #até i no range de 26
+        if mapped_key + i > 90: #caso o mapped_key + i for maior que 90
+            result += chr(mapped_key+(i-26))#incremento o mapped_key+(i-26) e transformo em chr
+        else:
+            result += chr(mapped_key+i)#incremento o mapped_key+i e transformo em chr
+
+   
+# contando o número de iterações necessárias desde a letra da chave mapeada até a letra do texto cifrado
+    for i in range(len(result)):
+        if result[i] == chr(message):
+            break
+        else:
+            counter += 1
+
+    return counter
+
+def main():
+    print("A chave e a mensagem só podem ser alfabéticas")
+    choice = int(input("1. Encriptacao:  "))
+    if choice == 1:
+        print("---Encriptacao---")
+        message, mapped_key = msg_and_key()
+        cipher_encryption(message, mapped_key)   
+    else:
+        print("Escolha errada")
+
+
+
+if __name__ == "__main__":
+    main()

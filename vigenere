@@ -1,4 +1,10 @@
 
+'''
+Suponha que temos um texto de string do alfabeto em minúsculas e temos outra string chamada key. Temos que encontrar uma nova string onde cada letra no texto [i] é movida para o lado direito com a tecla de deslocamento [i]. Aqui, o deslocamento representado pela posição da tecla [i] no alfabeto (A = 0, B = 1 etc.) Se a letra transbordar, ela se enrolará no outro lado.
+
+Portanto, se a entrada for como text = "code", key = "team", a saída será "vsdq". Para resolver isso, seguiremos estas etapas - cip: = a new list start: = ASCII de 'a 'para cada l do texto ek da chave, faça shift: = (ASCII de k) - iniciar pos: = start ((ASCII de l) - iniciar shift) mod 26 inserir caractere de pos no final de strings de junção cip de cip e return Vamos ver a implementação a seguir para obter um melhor entendimento -
+'''
+
 class Solution:
    def solve(self, text, key):
       cip = []
@@ -9,6 +15,14 @@ class Solution:
          cip.append(chr(pos))
       return ''.join([l for l in cip])
 ob = Solution()
-text = input('Digite sua senha : ')
-key = "abcdefgahdjasdjk"
+entrar = input('Deseja inserir uma senha?  S/N   ')
+if entrar =='s' or entrar == 'S':
+  text = input('Digite sua senha : ')
+  key = "abcdefgahdjasdjk"
+  ver = input('Deseja visualizar a senha ? S/N   ')
+  if ver =='s' or ver == 'S':
+    print(text)
+else:
+  print('Saindo do programa...')
+
 print(ob.solve(text, key))

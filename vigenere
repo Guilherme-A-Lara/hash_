@@ -82,6 +82,7 @@ def cipher_encryption(message, mapped_key):
 
     print("Encrypted Message: {}".format(encrypted_text)) #mostro o valor criptografado formatado
 
+
 def itr_count(mapped_key, message):
     counter = 0
     result = ""
@@ -109,10 +110,14 @@ def main():
     if choice == 1:
         print("---Encriptacao---")
         message, mapped_key = msg_and_key()
-        cipher_encryption(message, mapped_key)   
+        cipher_encryption(message, mapped_key)
+        escolha = input('Deseja Descriptografar seu código? (S/N)').upper()
+        if escolha == 'S' :
+          msg = msg_and_key()
+          print(f'Sua senha é {msg}')
+         
     else:
         print("Escolha errada")
-
 
 
 if __name__ == "__main__":

@@ -1,8 +1,20 @@
 
 '''
-Suponha que temos um texto de string do alfabeto em minúsculas e temos outra string chamada key. Temos que encontrar uma nova string onde cada letra no texto [i] é movida para o lado direito com a tecla de deslocamento [i]. Aqui, o deslocamento representado pela posição da tecla [i] no alfabeto (A = 0, B = 1 etc.) Se a letra transbordar, ela se enrolará no outro lado.
+Cifra de Vigenere 
 
-Portanto, se a entrada for como text = "code", key = "team", a saída será "vsdq". Para resolver isso, seguiremos estas etapas - cip: = a new list start: = ASCII de 'a 'para cada l do texto ek da chave, faça shift: = (ASCII de k) - iniciar pos: = start ((ASCII de l) - iniciar shift) mod 26 inserir caractere de pos no final de strings de junção cip de cip e return Vamos ver a implementação a seguir para obter um melhor entendimento -
+Usa-se uma palavra como key 
+
+Ou seja supondo q a primeira letra seja M ,será codificada em uma Cifra de César aonde T = A , a segunda ("O"), em uma onde E = A , e assim por diante.
+Ao concluir a chave, voltamos ao seu inicio. Ou seja, possui 5 letras , logo a 6° letra("A") será codificada de forma que T = A , e assim por diante.
+Exemplo 
+
+texto = morteaomiojo
+key = teste
+--
+Tabela de Vigenere = Muito usado na Segunda Guerra Mundial
+--
+Resultará em :
+fsjmi ts ebscs
 '''
 
 class Solution:

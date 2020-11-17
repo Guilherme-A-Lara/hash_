@@ -17,8 +17,8 @@ Resultará em :
 fsjmi ts ebscs
 '''
 def msg_and_key():
-    msg = input("Enter message: ").upper()#passar a mensagem/senha
-    key = input("Enter key: ").upper()#passar o valor da chave  de criptografia
+    msg = input("Entre com sua senha: ").upper()#passar a mensagem/senha
+    key = input("Entre com sua chave-unica: ").upper()#passar o valor da chave  de criptografia
 
     # variable to store mapped key
     key_map = "" 
